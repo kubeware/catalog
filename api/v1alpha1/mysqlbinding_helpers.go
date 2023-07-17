@@ -44,7 +44,7 @@ func (o MySQLBinding) NewObject() (*unstructured.Unstructured, error) {
 	obj.SetGroupVersionKind(schema.GroupVersionKind{
 		Group:   "kubedb.com",
 		Version: "v1alpha2",
-		Kind:    "MySQLDB",
+		Kind:    "MySQL",
 	})
 	obj.SetNamespace(o.Spec.SourceRef.Namespace)
 	obj.SetName(o.Spec.SourceRef.Name)

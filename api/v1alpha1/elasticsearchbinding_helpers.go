@@ -15,6 +15,10 @@ func (in *ElasticsearchBinding) GetSecretEngineName() string {
 	return meta.NameWithSuffix(in.GetName(), ElasticSuffix+"-secret-engine")
 }
 
+func (in *ElasticsearchBinding) GetSecretName() string {
+	return meta.NameWithSuffix(in.Spec.SourceRef.Name, ElasticSuffix+"-cred")
+}
+
 func (in *ElasticsearchBinding) GetUserRoleName() string {
 	return meta.NameWithSuffix(in.GetName(), ElasticSuffix+"-role")
 }

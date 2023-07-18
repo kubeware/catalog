@@ -39,6 +39,7 @@ func (in *RedisBinding) GetUserSecretAccessRequestName() string {
 	return meta.NameWithSuffix(in.GetName(), RedisSuffix+"-req")
 }
 
+// NewObject used to create an instance of a Redis resource that will be the source for the RedisBinding.
 func (o RedisBinding) NewObject() (*unstructured.Unstructured, error) {
 	var obj unstructured.Unstructured
 	obj.SetGroupVersionKind(schema.GroupVersionKind{
@@ -51,7 +52,7 @@ func (o RedisBinding) NewObject() (*unstructured.Unstructured, error) {
 	return &obj, nil
 }
 
-func GetPhaseForRedis(obj *RedisBinding) AppPhase {
+func GetPhaseForRedisBinding(obj *RedisBinding) AppPhase {
 	conditions := obj.Status.Conditions
 	if !obj.GetDeletionTimestamp().IsZero() {
 		return AppPhaseTerminating
